@@ -1,1 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消化系內視鏡醫學會積分 — 陳0明醫師</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #4a4a44;
+    --ink-muted: #8a8a82;
+    --cream: #f7f4ef;
+    --cream-dark: #ede9e1;
+    --gold: #9a7d4a;
+    --gold-light: #c4a96e;
+    --red-seal: #8b2020;
+    --green-ok: #2d6a2d;
+    --border: rgba(154,125,74,0.25);
+    --border-strong: rgba(154,125,74,0.5);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    min-height: 100vh;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(154,125,74,0.06) 39px, rgba(154,125,74,0.06) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(154,125,74,0.04) 39px, rgba(154,125,74,0.04) 40px);
+    pointer-events: none; z-index: 0;
+  }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 48px 80px; position: relative; z-index: 1; }
+  .top-bar { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-strong); padding-bottom: 18px; margin-bottom: 36px; }
+  .top-bar-left { display: flex; align-items: center; gap: 12px; }
+  .emblem { width: 42px; height: 42px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; }
+  .inst-name { font-size: 11px; color: var(--ink-muted); letter-spacing: 0.1em; line-height: 1.6; }
+  .inst-name strong { display: block; font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+  .back-link { font-size: 11px; color: var(--gold); letter-spacing: 0.08em; text-decoration: none; border: 1px solid var(--border-strong); padding: 6px 14px; transition: background 0.2s; }
+  .back-link:hover { background: rgba(154,125,74,0.08); }
+  /* Page title */
+  .page-title-row { margin-bottom: 32px; }
+  .page-tag { font-size: 10px; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .page-tag::before, .page-tag::after { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold-light); }
+  .page-title { font-family: 'Noto Serif TC', serif; font-size: 28px; font-weight: 300; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .page-sub { font-size: 13px; color: var(--ink-muted); }
+  /* Summary box */
+  .summary-box { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); margin-bottom: 32px; background: rgba(154,125,74,0.03); }
+  .summary-cell { padding: 20px 18px; border-right: 1px solid var(--border); }
+  .summary-cell:last-child { border-right: none; }
+  .summary-label { font-size: 10px; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+  .summary-value { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ink); line-height: 1.2; }
+  .summary-value.ok { color: var(--green-ok); font-size: 14px; font-family: 'Noto Sans TC', sans-serif; font-weight: 500; }
+  .summary-value.warn { color: var(--red-seal); font-size: 14px; font-family: 'Noto Sans TC', sans-serif; font-weight: 500; }
+  /* Section divider */
+  .section-div { display: flex; align-items: center; gap: 14px; margin: 32px 0 20px; }
+  .section-div-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+  .section-div-line { flex: 1; height: 1px; background: var(--border); }
+  /* CME Table */
+  .cme-table { border: 1px solid var(--border); margin-bottom: 40px; }
+  .cme-head { display: grid; background: rgba(154,125,74,0.06); border-bottom: 1px solid var(--border); }
+  .cme-hcell { padding: 9px 13px; font-size: 10px; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; border-right: 1px solid var(--border); }
+  .cme-hcell:last-child { border-right: none; text-align: center; }
+  .cme-row { display: grid; border-bottom: 1px solid var(--border); }
+  .cme-row:last-child { border-bottom: none; }
+  .cme-row.a-class { background: rgba(45,106,45,0.025); }
+  .cme-row.b-class { background: rgba(154,125,74,0.02); }
+  .cme-cell-d { padding: 10px 13px; font-size: 12px; color: var(--ink-soft); border-right: 1px solid var(--border); line-height: 1.4; }
+  .cme-cell-d.name { color: var(--ink); }
+  .cme-cell-d:last-child { border-right: none; text-align: center; font-weight: 500; }
+  .cme-foot { display: grid; background: rgba(154,125,74,0.06); }
+  .cme-foot-label { padding: 10px 13px; font-size: 11px; color: var(--gold); border-right: 1px solid var(--border); letter-spacing: 0.06em; }
+  .cme-foot-total { padding: 10px 13px; font-size: 14px; font-weight: 700; color: var(--ink); text-align: center; }
+  /* Class badge */
+  .badge { display: inline-block; font-size: 9px; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 2px; margin-right: 4px; font-weight: 500; }
+  .badge-a { background: rgba(45,106,45,0.12); color: #2d6a2d; }
+  .badge-b { background: rgba(154,125,74,0.12); color: var(--gold); }
+  /* Other specialty cards */
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 40px; }
+  .spec-card { padding: 18px 20px; border: 1px solid var(--border); position: relative; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s, transform 0.2s; }
+  .spec-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold-light); }
+  .spec-card:hover { box-shadow: 0 4px 16px rgba(154,125,74,0.15); transform: translateY(-2px); }
+  .spec-card.active { background: rgba(154,125,74,0.06); border-color: var(--border-strong); }
+  .spec-card.active::before { background: var(--gold); }
+  .card-title { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 400; letter-spacing: 0.04em; margin-bottom: 5px; }
+  .card-status { font-size: 11px; color: var(--ink-muted); line-height: 1.4; }
+  .card-status.ok { color: var(--green-ok); }
+  .card-status.warn { color: var(--red-seal); }
+  .card-status.neutral { color: var(--ink-muted); }
+  /* Footer */
+  .page-footer { border-top: 1px solid var(--border); padding-top: 20px; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.06em; line-height: 1.8; }
+</style>
+</head>
+<body>
 
+<div class="page">
+  <div class="top-bar">
+  <div class="top-bar-left">
+    <div class="emblem">✦</div>
+    <div class="inst-name"><strong>臺灣醫師執業生涯檔案系統</strong>Taiwan Physician Career Registry</div>
+  </div>
+  <a class="back-link" href="index.html">← 回醫師主頁</a>
+</div>
+  <div class="page-title-row">
+    <div class="page-tag">繼續教育積分記錄</div>
+    <div class="page-title">台灣消化系內視鏡醫學會（DEST）</div>
+    <div class="page-sub">消化系內視鏡專科醫師　Dr. Jimmy Chin-Ming Chen</div>
+  </div>
+  <div class="summary-box">
+    <div class="summary-cell"><div class="summary-label">會員編號</div><div class="summary-value">000757</div></div>
+    <div class="summary-cell"><div class="summary-label">專醫證號</div><div class="summary-value">872757</div></div>
+    <div class="summary-cell"><div class="summary-label">換證效期</div><div class="summary-value" style="font-size:14px;font-family:'Noto Sans TC';">112/03/01 ～ 118/02/28</div></div>
+    <div class="summary-cell"><div class="summary-label">積分狀態</div><div class="summary-value warn">86分（尚缺 A/B 類 14 分）</div></div>
+  </div>
+  <div class="section-div"><div class="section-div-label">積分明細</div><div class="section-div-line"></div></div>
+  <div class="cme-table">
+  <div class="cme-head" style="grid-template-columns:110px 1fr 200px 100px 50px">
+    <div class="cme-hcell">課程代號</div>
+    <div class="cme-hcell">活動名稱</div>
+    <div class="cme-hcell">主辦單位</div>
+    <div class="cme-hcell">日期</div>
+    <div class="cme-hcell">分</div>
+  </div>
+  <div style="padding:8px 13px;font-size:10px;color:var(--gold);letter-spacing:0.1em;border-bottom:1px solid var(--border);background:rgba(45,106,45,0.04);">
+    <span class="badge badge-a">A 類</span> 積分項目
+  </div>
+  <div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D112012-1</div>
+  <div class="cme-cell-d name">中華民國112年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2023/03/25</div>
+  <div class="cme-cell-d">9.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D112012-2</div>
+  <div class="cme-cell-d name">中華民國112年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2023/03/26</div>
+  <div class="cme-cell-d">7.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D112060-2</div>
+  <div class="cme-cell-d name">DEST 2023</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2023/07/30</div>
+  <div class="cme-cell-d">3.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D113050-1</div>
+  <div class="cme-cell-d name">DEST 2024</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2024/07/27</div>
+  <div class="cme-cell-d">8.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D113050-2</div>
+  <div class="cme-cell-d name">DEST 2024</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2024/07/28</div>
+  <div class="cme-cell-d">3.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114020-1</div>
+  <div class="cme-cell-d name">中華民國114年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2025/03/22</div>
+  <div class="cme-cell-d">9.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114020-2</div>
+  <div class="cme-cell-d name">中華民國114年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2025/03/23</div>
+  <div class="cme-cell-d">7.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114055-1</div>
+  <div class="cme-cell-d name">DEST 2025</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2025/07/26</div>
+  <div class="cme-cell-d">8.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114055-2</div>
+  <div class="cme-cell-d name">DEST 2025</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2025/07/27</div>
+  <div class="cme-cell-d">3.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114086-1</div>
+  <div class="cme-cell-d name">2025台灣消化醫學週（2025 TDDW）</div>
+  <div class="cme-cell-d">台灣消化系醫學會</div>
+  <div class="cme-cell-d">2025/09/27</div>
+  <div class="cme-cell-d">7.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D114086-2</div>
+  <div class="cme-cell-d name">2025台灣消化醫學週（2025 TDDW）</div>
+  <div class="cme-cell-d">台灣消化系醫學會</div>
+  <div class="cme-cell-d">2025/09/28</div>
+  <div class="cme-cell-d">4.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D115013-1</div>
+  <div class="cme-cell-d name">中華民國115年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2026/03/21</div>
+  <div class="cme-cell-d">9.0</div>
+</div><div class="cme-row a-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D115013-2</div>
+  <div class="cme-cell-d name">中華民國115年消化系聯合學術演講年會</div>
+  <div class="cme-cell-d">台灣消化系內視鏡醫學會</div>
+  <div class="cme-cell-d">2026/03/22</div>
+  <div class="cme-cell-d">7.0</div>
+</div>
+  <div style="padding:8px 13px;font-size:10px;color:var(--gold);letter-spacing:0.1em;border-bottom:1px solid var(--border);background:rgba(154,125,74,0.04);">
+    <span class="badge badge-b">B 類</span> 積分項目
+  </div>
+  <div class="cme-row b-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D112087</div>
+  <div class="cme-cell-d name">第五屆亞太醫用超音波新進展國際論壇暨中華民國醫用超音波學會39週年年會</div>
+  <div class="cme-cell-d">中華民國醫用超音波學會</div>
+  <div class="cme-cell-d">2023/10/14</div>
+  <div class="cme-cell-d">1.0</div>
+</div><div class="cme-row b-class" style="grid-template-columns:110px 1fr 200px 100px 50px">
+  <div class="cme-cell-d">D113087</div>
+  <div class="cme-cell-d name">第六屆亞太醫用超音波新進展國際論壇暨中華民國醫用超音波學會2024年會</div>
+  <div class="cme-cell-d">中華民國醫用超音波學會</div>
+  <div class="cme-cell-d">2024/10/19</div>
+  <div class="cme-cell-d">1.0</div>
+</div>
+  <div class="cme-foot" style="grid-template-columns:1fr 100px 50px">
+    <div class="cme-foot-label">A 類：84.0 分　　B 類：2.0 分</div>
+    <div class="cme-foot-label" style="text-align:right;">總計</div>
+    <div class="cme-foot-total">86.0</div>
+  </div>
+</div>
+  <div class="section-div"><div class="section-div-label">其他專科積分</div><div class="section-div-line"></div></div>
+<div class="cards-grid">
+  <a class="spec-card active" href="DigestiveDiseaseEndoscopy.html">
+    <div class="card-title">消化系內視鏡醫學會（DEST）</div>
+    <div class="card-status warn">86分（尚缺A/B類14分）</div>
+  </a>
+  <a class="spec-card " href="DigestiveDiseaseScience.html">
+    <div class="card-title">消化系醫學會</div>
+    <div class="card-status warn">20分（尚缺A/B類130分）</div>
+  </a>
+  <a class="spec-card " href="EmergencyCredit.html">
+    <div class="card-title">急診醫學會</div>
+    <div class="card-status neutral">效期：119/03/22</div>
+  </a>
+  <a class="spec-card " href="InternalMedicine.html">
+    <div class="card-title">內科醫學會</div>
+    <div class="card-status neutral">效期：119/02/06</div>
+  </a>
+  <a class="spec-card " href="CriticalCare.html">
+    <div class="card-title">急救加護醫學會</div>
+    <div class="card-status neutral">重症專字第0854號</div>
+  </a>
+  <a class="spec-card " href="Ultrasound.html">
+    <div class="card-title">超音波醫學會</div>
+    <div class="card-status neutral">指導員 G1188</div>
+  </a>
+  <a class="spec-card " href="HBO.html">
+    <div class="card-title">高壓氧醫學會</div>
+    <div class="card-status neutral">效期：119.04.07</div>
+  </a>
+</div>
+
+  <div class="page-footer">本文件由臺灣醫師執業生涯檔案系統自動生成　·　資料僅供官方存查用途</div>
+</div>
+</body></html>

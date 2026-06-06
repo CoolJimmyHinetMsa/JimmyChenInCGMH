@@ -91,7 +91,10 @@
   .stat-number { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--ink); font-weight: 400; line-height: 1; margin-bottom: 6px; }
   .stat-unit { font-size: 13px; color: var(--ink-muted); letter-spacing: 0.05em; }
   .specialty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px; }
-  .specialty-card { padding: 20px 22px; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .specialty-card { padding: 20px 22px; border: 1px solid var(--border); position: relative; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: box-shadow 0.2s, transform 0.15s; }
+  .specialty-card:hover { box-shadow: 0 4px 18px rgba(154,125,74,0.18); transform: translateY(-2px); cursor: pointer; }
+  .specialty-card.linked::after { content: '→ 積分記錄'; position: absolute; bottom: 10px; right: 14px; font-size: 10px; color: var(--gold); letter-spacing: 0.08em; opacity: 0; transition: opacity 0.2s; }
+  .specialty-card.linked:hover::after { opacity: 1; }
   .specialty-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold-light); }
   .specialty-card-title { font-family: 'Noto Serif TC', serif; font-size: 15px; color: var(--ink); margin-bottom: 6px; font-weight: 400; letter-spacing: 0.04em; }
   .specialty-card-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.6; font-weight: 300; }
@@ -205,12 +208,12 @@
     <div class="section-divider-line"></div>
   </div>
   <div class="specialty-grid">
-    <div class="specialty-card"><div class="specialty-card-title">內科</div><div class="specialty-card-desc">一般內科診治，常見內科疾患之評估與處置</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">內專證號：003658｜效期：113/02/07 ～ 119/02/06</div></div>
-    <div class="specialty-card"><div class="specialty-card-title">消化系專科・消化系內視鏡</div><div class="specialty-card-desc">消化系疾病、肝膽腸胃疾患；消化道內視鏡診斷與處置</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">消化系 — 專醫證號：000578｜原始：85/02/27｜效期：115/02/27 ～ 121/02/26<br>內視鏡 — 專醫證號：872757｜原始：88/03/01｜效期：112/03/01 ～ 118/02/28</div></div>
-    <div class="specialty-card"><div class="specialty-card-title">急診醫學科</div><div class="specialty-card-desc">急重症處置、創傷救治、緊急醫療應變</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">急專醫字第 000200 號<br>起始：民國 89/03/23　效期至：民國 119/03/22<br>換證日：中華民國 112 年 12 月 1 日</div></div>
-    <div class="specialty-card"><div class="specialty-card-title">重症專科</div><div class="specialty-card-desc">加護病房重症管理、多重器官衰竭照護、敗血症積極治療</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">重症專字第 0854 號｜效期：2021/06/01 ～ 2027/12/31</div></div>
-    <div class="specialty-card"><div class="specialty-card-title">高壓氧醫學</div><div class="specialty-card-desc">一氧化碳中毒、潛水夫病、難癒傷口及氣栓症之高壓氧治療</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">效期：113.04.07 ～ 119.04.07</div></div>
-    <div class="specialty-card"><div class="specialty-card-title">腹部超音波・急診超音波 <span style="font-size:11px;color:var(--gold);">含指導醫師</span></div><div class="specialty-card-desc">腹部超音波診斷判讀、急診床邊即時超音波（POCUS）</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">指導員編號：G1188</div></div>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/InternalMedicine.html"><div class="specialty-card-title">內科</div><div class="specialty-card-desc">一般內科診治，常見內科疾患之評估與處置</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">內專證號：003658｜效期：113/02/07 ～ 119/02/06</div></a>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/DigestiveDiseaseEndoscopy.html"><div class="specialty-card-title">消化系專科・消化系內視鏡</div><div class="specialty-card-desc">消化系疾病、肝膽腸胃疾患；消化道內視鏡診斷與處置</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">消化系 — 專醫證號：000578｜原始：85/02/27｜效期：115/02/27 ～ 121/02/26<br>內視鏡 — 專醫證號：872757｜原始：88/03/01｜效期：112/03/01 ～ 118/02/28</div></a>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/EmergencyCredit.html"><div class="specialty-card-title">急診醫學科</div><div class="specialty-card-desc">急重症處置、創傷救治、緊急醫療應變</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">急專醫字第 000200 號<br>起始：民國 89/03/23　效期至：民國 119/03/22<br>換證日：中華民國 112 年 12 月 1 日</div></a>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/CriticalCare.html"><div class="specialty-card-title">重症專科</div><div class="specialty-card-desc">加護病房重症管理、多重器官衰竭照護、敗血症積極治療</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">重症專字第 0854 號｜效期：2021/06/01 ～ 2027/12/31</div></a>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/HBO.html"><div class="specialty-card-title">高壓氧醫學</div><div class="specialty-card-desc">一氧化碳中毒、潛水夫病、難癒傷口及氣栓症之高壓氧治療</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">效期：113.04.07 ～ 119.04.07</div></a>
+    <a class="specialty-card linked" href="ContinuedEducationCredits/Ultrasound.html"><div class="specialty-card-title">腹部超音波・急診超音波 <span style="font-size:11px;color:var(--gold);">含指導醫師</span></div><div class="specialty-card-desc">腹部超音波診斷判讀、急診床邊即時超音波（POCUS）</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">指導員編號：G1188</div></a>
     <div class="specialty-card"><div class="specialty-card-title">健康檢查・臨廠服務 <span style="font-size:11px;color:var(--gold);">含指導醫師</span></div><div class="specialty-card-desc">公司定期健康檢查、工廠駐診（臨廠服務）；聯合甄審指導醫師</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">聯甄專字第 00610 號</div></div>
     <div class="specialty-card"><div class="specialty-card-title">ACLS 高級心臟救命術 <span style="font-size:11px;color:var(--gold);">指導員</span></div><div class="specialty-card-desc">Advanced Cardiovascular Life Support 認證指導員</div><div style="margin-top:8px;font-size:11px;color:var(--ink-muted);">效期：113.03.21 ～ 115.03.20</div></div>
     <div class="specialty-card"><div class="specialty-card-title">急救 CPR <span style="font-size:11px;color:var(--gold);">講師</span></div><div class="specialty-card-desc">基本心肺復甦術（CPR）認證講師，主持急救訓練課程</div></div>

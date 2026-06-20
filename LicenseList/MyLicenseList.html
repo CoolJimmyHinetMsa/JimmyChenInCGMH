@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyLicenseList — 陳進明 證書總覽</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body {
+    font-family: "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2.5rem 1rem;
+  }
+
+  header {
+    max-width: 860px;
+    margin: 0 auto 2.5rem;
+    border-bottom: 1.5px solid #d0cec5;
+    padding-bottom: 1.25rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: #111;
+  }
+
+  header p {
+    margin-top: .4rem;
+    font-size: .9rem;
+    color: #666;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    border: 0.5px solid #d8d5cc;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s;
+  }
+
+  .card:hover {
+    box-shadow: 0 6px 28px rgba(0,0,0,.10);
+  }
+
+  .card-badge {
+    padding: .6rem 1.1rem;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+  }
+
+  .badge-blue  { background: #e6f1fb; color: #185fa5; }
+  .badge-gold  { background: #faeeda; color: #854f0b; }
+  .badge-green { background: #eaf3de; color: #3b6d11; }
+
+  .card-icon {
+    font-size: 1rem;
+  }
+
+  .doc-preview {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border-top: 0.5px solid #e8e5dc;
+    border-bottom: 0.5px solid #e8e5dc;
+    background: #f9f8f4;
+  }
+
+  .card-body {
+    padding: 1rem 1.1rem 1.15rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #111;
+    line-height: 1.4;
+  }
+
+  .card-meta {
+    font-size: .82rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .card-meta span {
+    display: block;
+  }
+
+  .divider {
+    height: 0.5px;
+    background: #e8e5dc;
+    margin: .5rem 0;
+  }
+
+  .card-detail {
+    font-size: .78rem;
+    color: #888;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: .78rem;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📄 證書總覽 — 陳進明</h1>
+  <p>Chen Chin-Ming &nbsp;·&nbsp; 身分證字號：B120715657 &nbsp;·&nbsp; 出生日期：53 年 06 月 01 日</p>
+</header>
+
+<div class="grid">
+
+  <!-- 1. College Graduate -->
+  <div class="card">
+    <div class="card-badge badge-blue">
+      <span class="card-icon">🎓</span> 大學畢業文憑
+    </div>
+    <img
+      class="doc-preview"
+      src="JimmyCollegeGraduate.jpg"
+      alt="大學畢業證書 預覽"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    >
+    <div class="doc-preview" style="display:none; align-items:center; justify-content:center; background:#f5f4f0; font-size:3rem;">📜</div>
+    <div class="card-body">
+      <div class="card-title">大學畢業證書</div>
+      <div class="divider"></div>
+      <div class="card-meta">
+        <span>持有人：陳進明</span>
+        <span>文件編號：680789（序號）</span>
+      </div>
+      <div class="card-detail">畢業資格文件，已核章</div>
+    </div>
+  </div>
+
+  <!-- 2. PhD Diploma -->
+  <div class="card">
+    <div class="card-badge badge-gold">
+      <span class="card-icon">🏛️</span> 博士學位證書
+    </div>
+    <img
+      class="doc-preview"
+      src="JimmyPhDDiplomatic.jpg"
+      alt="長庚大學博士學位證書 預覽"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    >
+    <div class="doc-preview" style="display:none; align-items:center; justify-content:center; background:#f5f4f0; font-size:3rem;">🎓</div>
+    <div class="card-body">
+      <div class="card-title">長庚大學博士學位證書</div>
+      <div class="divider"></div>
+      <div class="card-meta">
+        <span>學生：陳進明</span>
+        <span>所屬研究所：臨床醫學研究所博士班</span>
+        <span>學位：醫學博士（MD, PhD）</span>
+        <span>學號：D8600010</span>
+        <span>長庚（97）博字第 0005 號</span>
+        <span>授予日期：中華民國九十八年六月</span>
+      </div>
+      <div class="card-detail">校長：包家駒 ／ 所長：王馨世</div>
+    </div>
+  </div>
+
+  <!-- 3. Teacher / Assistant Professor Licence -->
+  <div class="card">
+    <div class="card-badge badge-green">
+      <span class="card-icon">📋</span> 助理教授證書
+    </div>
+    <img
+      class="doc-preview"
+      src="JimmyTeacherLicence9906.jpg"
+      alt="助理教授證書 預覽"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+    >
+    <div class="doc-preview" style="display:none; align-items:center; justify-content:center; background:#f5f4f0; font-size:3rem;">📋</div>
+    <div class="card-body">
+      <div class="card-title">助理教授證書</div>
+      <div class="divider"></div>
+      <div class="card-meta">
+        <span>姓名：陳進明</span>
+        <span>身分證字號：B120715657</span>
+        <span>出生年月日：伍拾參年陸月壹日</span>
+        <span>年資起算：玖拾玖年陸月</span>
+        <span>送審學校：國立體育大學</span>
+        <span>證書字號：助理字第 0二九三一八號</span>
+        <span>核發日期：中華民國玖拾玖年陸月玖日</span>
+      </div>
+      <div class="card-detail">教育部部長：吳清基 核發</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  MyLicenseList &nbsp;·&nbsp; 本頁僅供個人紀錄使用
+</footer>
+
+</body>
+</html>

@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>臨床日誌 — 總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1620;
+    --surface: #11222F;
+    --surface-hover: #16293A;
+    --line: #21384A;
+    --mint: #4CDBC4;
+    --coral: #FF6B5E;
+    --text: #E8EEF2;
+    --muted: #7C93A3;
+  }
 
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 72px 24px 100px;
+  }
+
+  /* ---- Hero ---- */
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin: 0 0 18px;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.5vw, 52px);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .sub{
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 0 40px;
+  }
+
+  /* ---- pulse line, signature element ---- */
+  .pulse{
+    width: 100%;
+    height: 48px;
+    margin-bottom: 56px;
+    overflow: visible;
+  }
+  .pulse path{
+    fill: none;
+    stroke: var(--mint);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: draw 3.2s ease-in-out infinite;
+  }
+  @keyframes draw{
+    0%   { stroke-dashoffset: 600; opacity: .25; }
+    45%  { stroke-dashoffset: 0;   opacity: 1; }
+    70%  { stroke-dashoffset: 0;   opacity: 1; }
+    100% { stroke-dashoffset: -600; opacity: .25; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pulse path{ animation: none; stroke-dashoffset: 0; opacity: .6; }
+  }
+
+  /* ---- card grid ---- */
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 620px){
+    .grid{ grid-template-columns: 1fr; }
+  }
+
+  .card{
+    position: relative;
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 26px 24px 22px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+  .card:hover, .card:focus-visible{
+    background: var(--surface-hover);
+    border-color: var(--mint);
+    transform: translateY(-2px);
+  }
+  .card:focus-visible{
+    outline: 2px solid var(--mint);
+    outline-offset: 2px;
+  }
+
+  .card-top{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .index-no{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .icon{
+    width: 22px; height: 22px;
+    color: var(--mint);
+    flex-shrink: 0;
+  }
+  .icon svg{ width: 100%; height: 100%; }
+
+  .card-title{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  .card-en{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  .card-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .timestamp{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .timestamp::before{
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+    margin-right: 7px;
+    vertical-align: middle;
+  }
+
+  .go{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--mint);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .card:hover .go, .card:focus-visible .go{
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* the global-view card gets a quiet emphasis: full width, coral dot */
+  .card.featured{
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--surface) 0%, #122a30 100%);
+  }
+  .card.featured .timestamp::before{ background: var(--coral); }
+
+  footer{
+    margin-top: 56px;
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Clinical Skills Log</p>
+  <h1>我的臨床日誌</h1>
+  <p class="sub">記錄每一次「第一次」的臨床技術操作 — 點選卡片查看完整紀錄。</p>
+
+  <svg class="pulse" viewBox="0 0 600 48" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 24 L130 24 L150 6 L168 42 L186 14 L200 24 L600 24" />
+  </svg>
+
+  <div class="grid">
+
+    <a class="card" href="FirstIntubation.html">
+      <div class="card-top">
+        <span class="index-no">01</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3v6a3 3 0 0 0 6 0V3"/>
+            <path d="M9 9c0 6-3 7-3 11a4 4 0 0 0 8 0v-2"/>
+            <path d="M15 9c0 6 3 7 3 11a4 4 0 0 1-8 0v-2"/>
+          </svg>
+        </span>
+      </div>
+      <h2 class="card-title">第一次插管</h2>
+      <p class="card-en">FirstIntubation.html</p>
+      <div class="card-bottom">
+        <span class="timestamp">2 週前</span>
+        <span class="go">查看紀錄 →</span>
+      </div>
+    </a>
+
+    <a class="card" href="MyFirstFoley.html">
+      <div class="card-top">
+        <span class="index-no">02</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11Z"/>
+          </svg>
+        </span>
+      </div>
+      <h2 class="card-title">第一次導尿管置放</h2>
+      <p class="card-en">MyFirstFoley.html</p>
+      <div class="card-bottom">
+        <span class="timestamp">上週</span>
+        <span class="go">查看紀錄 →</span>
+      </div>
+    </a>
+
+    <a class="card" href="MyFirstOldFemaleFoley.html">
+      <div class="card-top">
+        <span class="index-no">03</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="6" r="3"/>
+            <path d="M7 21c0-4 2-7 5-7s5 3 5 7"/>
+            <path d="M9.5 16.5 9 21M14.5 16.5 15 21"/>
+          </svg>
+        </span>
+      </div>
+      <h2 class="card-title">第一次導尿（高齡女性個案）</h2>
+      <p class="card-en">MyFirstOldFemaleFoley.html</p>
+      <div class="card-bottom">
+        <span class="timestamp">上週</span>
+        <span class="go">查看紀錄 →</span>
+      </div>
+    </a>
+
+    <a class="card featured" href="MyStoryGlobalView.html">
+      <div class="card-top">
+        <span class="index-no">04</span>
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/>
+            <path d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2"/>
+            <path d="M8 7h8M8 11h8M8 15h5"/>
+          </svg>
+        </span>
+      </div>
+      <h2 class="card-title">完整故事總覽</h2>
+      <p class="card-en">MyStoryGlobalView.html</p>
+      <div class="card-bottom">
+        <span class="timestamp">剛剛</span>
+        <span class="go">查看紀錄 →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>4 entries · sorted by recency</footer>
+
+</div>
+</body>
+</html>
